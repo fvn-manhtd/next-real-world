@@ -2,8 +2,6 @@
 
 ## About
 
-## [Demo] [RealWorld]
-
 This codebase was created to demonstrate a fully fledged fullstack application built with Next.js, Apollo GraphQL stack and Prisma including CRUD operations, authentication, routing, pagination, and more.
 
 ## Used Stacks
@@ -101,8 +99,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-[Demo]:https://next-real-world.vercel.app
-[RealWorld]:https://github.com/gothinkster/realworld
 [Prisma]:https://github.com/prisma/prisma
 [Apollo Server]:https://github.com/apollographql/apollo-server
 [Apollo Client]:https://github.com/apollographql/apollo-client
