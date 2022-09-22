@@ -25,7 +25,7 @@ const ArticleQuery = extendType({
         favorited: stringArg(),
         limit: intArg({ default: 10 }),
         offset: intArg({ default: 0 }),
-        cursor: intArg(),
+        cursor: stringArg(),
       },
       validate: ({ string, number }) => ({
         author: string(),
@@ -33,7 +33,7 @@ const ArticleQuery = extendType({
         favorited: string(),
         limit: number().integer().positive().max(100),
         offset: number().integer(),
-        cursor: number().integer().positive(),
+        cursor: string(),
       }),
       resolve: (_, { limit, offset, ...rest }, context: Context) => {
         let skip, take;
@@ -78,13 +78,13 @@ const ArticleQuery = extendType({
       args: {
         limit: intArg({ default: 10 }),
         offset: intArg({ default: 0 }),
-        cursor: intArg(),
+        cursor: stringArg(),
       },
       authorize: (_, _args, ctx: Context) => !!ctx.currentUser,
-      validate: ({ number }) => ({
+      validate: ({ number, string }) => ({
         limit: number().integer().positive().max(100),
         offset: number().integer(),
-        cursor: number().integer().positive(),
+        cursor: string(),
       }),
       resolve: (_, { limit, offset, cursor }, context: Context) => {
         let skip, take;

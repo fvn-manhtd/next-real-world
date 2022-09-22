@@ -76,7 +76,7 @@ export interface NexusGenObjects {
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     description: string; // String!
     favoritesCount: number; // Int!
-    id: number; // Int!
+    id: string; // String!
     slug: string; // String!
     title: string; // String!
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
@@ -84,7 +84,7 @@ export interface NexusGenObjects {
   AuthUser: { // root type
     bio?: string | null; // String
     email: string; // String!
-    id: number; // Int!
+    id: string; // String!
     image?: string | null; // String
     token?: string | null; // String
     username: string; // String!
@@ -92,7 +92,7 @@ export interface NexusGenObjects {
   Comment: { // root type
     body: string; // String!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
-    id: number; // Int!
+    id: string; // String!
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   Mutation: {};
@@ -124,7 +124,7 @@ export interface NexusGenFieldTypes {
     description: string; // String!
     favorited: boolean; // Boolean!
     favoritesCount: number; // Int!
-    id: number; // Int!
+    id: string; // String!
     slug: string; // String!
     tagList: string[]; // [String!]!
     title: string; // String!
@@ -133,7 +133,7 @@ export interface NexusGenFieldTypes {
   AuthUser: { // field return type
     bio: string | null; // String
     email: string; // String!
-    id: number; // Int!
+    id: string; // String!
     image: string | null; // String
     token: string | null; // String
     username: string; // String!
@@ -142,7 +142,7 @@ export interface NexusGenFieldTypes {
     author: NexusGenRootTypes['Profile']; // Profile!
     body: string; // String!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
-    id: number; // Int!
+    id: string; // String!
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
   Mutation: { // field return type
@@ -184,7 +184,7 @@ export interface NexusGenFieldTypes {
     username: string; // String!
   }
   Node: { // field return type
-    id: number; // Int!
+    id: string; // String!
   }
 }
 
@@ -196,7 +196,7 @@ export interface NexusGenFieldTypeNames {
     description: 'String'
     favorited: 'Boolean'
     favoritesCount: 'Int'
-    id: 'Int'
+    id: 'String'
     slug: 'String'
     tagList: 'String'
     title: 'String'
@@ -205,7 +205,7 @@ export interface NexusGenFieldTypeNames {
   AuthUser: { // field return type name
     bio: 'String'
     email: 'String'
-    id: 'Int'
+    id: 'String'
     image: 'String'
     token: 'String'
     username: 'String'
@@ -214,7 +214,7 @@ export interface NexusGenFieldTypeNames {
     author: 'Profile'
     body: 'String'
     createdAt: 'DateTime'
-    id: 'Int'
+    id: 'String'
     updatedAt: 'DateTime'
   }
   Mutation: { // field return type name
@@ -256,7 +256,7 @@ export interface NexusGenFieldTypeNames {
     username: 'String'
   }
   Node: { // field return type name
-    id: 'Int'
+    id: 'String'
   }
 }
 
@@ -325,7 +325,7 @@ export interface NexusGenArgTypes {
       username: string; // String!
     }
     comments: { // args
-      articleId: number; // Int!
+      articleId: string; // String!
       cursor?: number | null; // Int
       limit: number | null; // Int
       offset?: number | null; // Int

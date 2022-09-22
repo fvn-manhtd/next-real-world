@@ -24,7 +24,7 @@ export type Article = Node & {
   description: Scalars['String'];
   favorited: Scalars['Boolean'];
   favoritesCount: Scalars['Int'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   slug: Scalars['String'];
   tagList: Array<Scalars['String']>;
   title: Scalars['String'];
@@ -42,7 +42,7 @@ export type AuthUser = BaseUser & Node & {
   __typename?: 'AuthUser';
   bio?: Maybe<Scalars['String']>;
   email: Scalars['String'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   image?: Maybe<Scalars['String']>;
   token?: Maybe<Scalars['String']>;
   username: Scalars['String'];
@@ -59,7 +59,7 @@ export type Comment = Node & {
   author: Profile;
   body: Scalars['String'];
   createdAt: Scalars['DateTime'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   updatedAt: Scalars['DateTime'];
 };
 
@@ -101,7 +101,7 @@ export type MutationDeleteArticleArgs = {
 
 
 export type MutationDeleteCommentArgs = {
-  id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 
@@ -146,7 +146,7 @@ export type MutationUpdateUserArgs = {
 };
 
 export type Node = {
-  id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 export type Profile = BaseUser & {
@@ -180,7 +180,7 @@ export type QueryArticleArgs = {
 
 export type QueryArticlesArgs = {
   author?: InputMaybe<Scalars['String']>;
-  cursor?: InputMaybe<Scalars['Int']>;
+  cursor?: InputMaybe<Scalars['String']>;
   favorited?: InputMaybe<Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -206,15 +206,15 @@ export type QueryCheckUsernameArgs = {
 
 
 export type QueryCommentsArgs = {
-  articleId: Scalars['Int'];
-  cursor?: InputMaybe<Scalars['Int']>;
+  articleId: Scalars['String'];
+  cursor?: InputMaybe<Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
 
 
 export type QueryFeedArgs = {
-  cursor?: InputMaybe<Scalars['Int']>;
+  cursor?: InputMaybe<Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
@@ -249,11 +249,11 @@ export type ArticlesQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
   tag?: InputMaybe<Scalars['String']>;
-  cursor?: InputMaybe<Scalars['Int']>;
+  cursor?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ArticlesQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: number, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
+export type ArticlesQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: string, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
 
 export type ArticlesCountQueryVariables = Exact<{
   author?: InputMaybe<Scalars['String']>;
@@ -267,11 +267,11 @@ export type ArticlesCountQuery = { __typename?: 'Query', articlesCount: number }
 export type FeedQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
-  cursor?: InputMaybe<Scalars['Int']>;
+  cursor?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type FeedQuery = { __typename?: 'Query', feed: Array<{ __typename?: 'Article', id: number, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
+export type FeedQuery = { __typename?: 'Query', feed: Array<{ __typename?: 'Article', id: string, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
 
 export type FeedCountQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -283,42 +283,42 @@ export type FavoriteMutationVariables = Exact<{
 }>;
 
 
-export type FavoriteMutation = { __typename?: 'Mutation', favorite: { __typename?: 'Article', id: number, favorited: boolean, favoritesCount: number } };
+export type FavoriteMutation = { __typename?: 'Mutation', favorite: { __typename?: 'Article', id: string, favorited: boolean, favoritesCount: number } };
 
 export type UnfavoriteMutationVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type UnfavoriteMutation = { __typename?: 'Mutation', unfavorite: { __typename?: 'Article', id: number, favorited: boolean, favoritesCount: number } };
+export type UnfavoriteMutation = { __typename?: 'Mutation', unfavorite: { __typename?: 'Article', id: string, favorited: boolean, favoritesCount: number } };
 
-export type FavoritesFragment = { __typename?: 'Article', id: number, favorited: boolean, favoritesCount: number };
+export type FavoritesFragment = { __typename?: 'Article', id: string, favorited: boolean, favoritesCount: number };
 
-export type ArticlePreviewFragment = { __typename?: 'Article', id: number, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } };
+export type ArticlePreviewFragment = { __typename?: 'Article', id: string, slug: string, description: string, title: string, createdAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null } };
 
 export type ArticleQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: number, slug: string, title: string, description: string, body: string, createdAt: any, updatedAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null, following: boolean } } | null };
+export type ArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: string, slug: string, title: string, description: string, body: string, createdAt: any, updatedAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null, following: boolean } } | null };
 
 export type ArticleMetaQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type ArticleMetaQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: number, slug: string, favorited: boolean, favoritesCount: number, author: { __typename?: 'Profile', username: string, following: boolean } } | null };
+export type ArticleMetaQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: string, slug: string, favorited: boolean, favoritesCount: number, author: { __typename?: 'Profile', username: string, following: boolean } } | null };
 
 export type CommentsQueryVariables = Exact<{
-  articleId: Scalars['Int'];
+  articleId: Scalars['String'];
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  cursor?: InputMaybe<Scalars['Int']>;
+  cursor?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type CommentsQuery = { __typename?: 'Query', comments: Array<{ __typename?: 'Comment', id: number, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
+export type CommentsQuery = { __typename?: 'Query', comments: Array<{ __typename?: 'Comment', id: string, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } }> };
 
 export type CreateCommentMutationVariables = Exact<{
   slug: Scalars['String'];
@@ -326,46 +326,46 @@ export type CreateCommentMutationVariables = Exact<{
 }>;
 
 
-export type CreateCommentMutation = { __typename?: 'Mutation', createComment: { __typename?: 'Comment', id: number, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } } };
+export type CreateCommentMutation = { __typename?: 'Mutation', createComment: { __typename?: 'Comment', id: string, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } } };
 
 export type DeleteCommentMutationVariables = Exact<{
-  deleteCommentId: Scalars['Int'];
+  deleteCommentId: Scalars['String'];
 }>;
 
 
-export type DeleteCommentMutation = { __typename?: 'Mutation', deleteComment: { __typename?: 'Comment', id: number } };
+export type DeleteCommentMutation = { __typename?: 'Mutation', deleteComment: { __typename?: 'Comment', id: string } };
 
 export type DeleteArticleMutationVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type DeleteArticleMutation = { __typename?: 'Mutation', deleteArticle: { __typename?: 'Article', id: number } };
+export type DeleteArticleMutation = { __typename?: 'Mutation', deleteArticle: { __typename?: 'Article', id: string } };
 
-export type ArticleViewFragment = { __typename?: 'Article', id: number, slug: string, title: string, description: string, body: string, createdAt: any, updatedAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null, following: boolean } };
+export type ArticleViewFragment = { __typename?: 'Article', id: string, slug: string, title: string, description: string, body: string, createdAt: any, updatedAt: any, favorited: boolean, favoritesCount: number, tagList: Array<string>, author: { __typename?: 'Profile', username: string, image?: string | null, following: boolean } };
 
-export type ArticleMetaViewFragment = { __typename?: 'Article', id: number, slug: string, favorited: boolean, favoritesCount: number, author: { __typename?: 'Profile', username: string, following: boolean } };
+export type ArticleMetaViewFragment = { __typename?: 'Article', id: string, slug: string, favorited: boolean, favoritesCount: number, author: { __typename?: 'Profile', username: string, following: boolean } };
 
-export type CommentViewFragment = { __typename?: 'Comment', id: number, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } };
+export type CommentViewFragment = { __typename?: 'Comment', id: string, body: string, createdAt: any, author: { __typename?: 'Profile', username: string, image?: string | null } };
 
 export type LoginMutationVariables = Exact<{
   input: UserLoginInput;
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'AuthUser', id: number, username: string, email: string, bio?: string | null, image?: string | null, token?: string | null } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'AuthUser', id: string, username: string, email: string, bio?: string | null, image?: string | null, token?: string | null } };
 
 export type SignupMutationVariables = Exact<{
   input: UserSignupInput;
 }>;
 
 
-export type SignupMutation = { __typename?: 'Mutation', signup?: { __typename?: 'AuthUser', id: number, username: string, email: string, bio?: string | null, image?: string | null, token?: string | null } | null };
+export type SignupMutation = { __typename?: 'Mutation', signup?: { __typename?: 'AuthUser', id: string, username: string, email: string, bio?: string | null, image?: string | null, token?: string | null } | null };
 
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserQuery = { __typename?: 'Query', currentUser: { __typename?: 'AuthUser', id: number, username: string, email: string, bio?: string | null, image?: string | null } };
+export type CurrentUserQuery = { __typename?: 'Query', currentUser: { __typename?: 'AuthUser', id: string, username: string, email: string, bio?: string | null, image?: string | null } };
 
 export type CheckUsernameQueryVariables = Exact<{
   username: Scalars['String'];
@@ -386,7 +386,7 @@ export type CreateArticleMutationVariables = Exact<{
 }>;
 
 
-export type CreateArticleMutation = { __typename?: 'Mutation', createArticle: { __typename?: 'Article', id: number, slug: string } };
+export type CreateArticleMutation = { __typename?: 'Mutation', createArticle: { __typename?: 'Article', id: string, slug: string } };
 
 export type UpdateArticleMutationVariables = Exact<{
   slug: Scalars['String'];
@@ -394,16 +394,16 @@ export type UpdateArticleMutationVariables = Exact<{
 }>;
 
 
-export type UpdateArticleMutation = { __typename?: 'Mutation', updateArticle: { __typename?: 'Article', id: number, slug: string, title: string, body: string, description: string, tagList: Array<string> } };
+export type UpdateArticleMutation = { __typename?: 'Mutation', updateArticle: { __typename?: 'Article', id: string, slug: string, title: string, body: string, description: string, tagList: Array<string> } };
 
 export type EditArticleQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type EditArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: number, slug: string, title: string, body: string, description: string, tagList: Array<string>, author: { __typename?: 'Profile', username: string } } | null };
+export type EditArticleQuery = { __typename?: 'Query', article?: { __typename?: 'Article', id: string, slug: string, title: string, body: string, description: string, tagList: Array<string>, author: { __typename?: 'Profile', username: string } } | null };
 
-export type EditArticleViewFragment = { __typename?: 'Article', id: number, slug: string, title: string, body: string, description: string, tagList: Array<string>, author: { __typename?: 'Profile', username: string } };
+export type EditArticleViewFragment = { __typename?: 'Article', id: string, slug: string, title: string, body: string, description: string, tagList: Array<string>, author: { __typename?: 'Profile', username: string } };
 
 export type TagsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -438,7 +438,7 @@ export type UpdateUserMutationVariables = Exact<{
 }>;
 
 
-export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'AuthUser', id: number, username: string, email: string, bio?: string | null, image?: string | null } };
+export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'AuthUser', id: string, username: string, email: string, bio?: string | null, image?: string | null } };
 
 export const FavoritesFragmentDoc = gql`
     fragment Favorites on Article {
@@ -525,7 +525,7 @@ export const FollowsFragmentDoc = gql`
 }
     `;
 export const ArticlesDocument = gql`
-    query Articles($author: String, $favorited: String, $offset: Int, $limit: Int, $tag: String, $cursor: Int) {
+    query Articles($author: String, $favorited: String, $offset: Int, $limit: Int, $tag: String, $cursor: String) {
   articles(
     author: $author
     favorited: $favorited
@@ -607,7 +607,7 @@ export type ArticlesCountQueryHookResult = ReturnType<typeof useArticlesCountQue
 export type ArticlesCountLazyQueryHookResult = ReturnType<typeof useArticlesCountLazyQuery>;
 export type ArticlesCountQueryResult = Apollo.QueryResult<ArticlesCountQuery, ArticlesCountQueryVariables>;
 export const FeedDocument = gql`
-    query Feed($offset: Int, $limit: Int, $cursor: Int) {
+    query Feed($offset: Int, $limit: Int, $cursor: String) {
   feed(offset: $offset, limit: $limit, cursor: $cursor) {
     ...ArticlePreview
   }
@@ -812,7 +812,7 @@ export type ArticleMetaQueryHookResult = ReturnType<typeof useArticleMetaQuery>;
 export type ArticleMetaLazyQueryHookResult = ReturnType<typeof useArticleMetaLazyQuery>;
 export type ArticleMetaQueryResult = Apollo.QueryResult<ArticleMetaQuery, ArticleMetaQueryVariables>;
 export const CommentsDocument = gql`
-    query Comments($articleId: Int!, $limit: Int, $offset: Int, $cursor: Int) {
+    query Comments($articleId: String!, $limit: Int, $offset: Int, $cursor: String) {
   comments(articleId: $articleId, limit: $limit, offset: $offset, cursor: $cursor) {
     ...CommentView
   }
@@ -884,7 +884,7 @@ export type CreateCommentMutationHookResult = ReturnType<typeof useCreateComment
 export type CreateCommentMutationResult = Apollo.MutationResult<CreateCommentMutation>;
 export type CreateCommentMutationOptions = Apollo.BaseMutationOptions<CreateCommentMutation, CreateCommentMutationVariables>;
 export const DeleteCommentDocument = gql`
-    mutation DeleteComment($deleteCommentId: Int!) {
+    mutation DeleteComment($deleteCommentId: String!) {
   deleteComment(id: $deleteCommentId) {
     id
   }

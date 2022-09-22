@@ -1,4 +1,4 @@
-import { extendType, intArg, nonNull } from 'nexus';
+import { extendType, intArg, nonNull, stringArg } from 'nexus';
 import { Context } from '../context';
 import { checkArticleById } from '../mutation/article.mutation';
 
@@ -8,16 +8,16 @@ const CommentQuery = extendType({
     t.nonNull.list.nonNull.field('comments', {
       type: 'Comment',
       args: {
-        articleId: nonNull(intArg()),
+        articleId: nonNull(stringArg()),
         limit: intArg({ default: 20 }),
         offset: intArg({ default: 0 }),
-        cursor: intArg(),
+        cursor: stringArg(),
       },
-      validate: ({ number }) => ({
-        articleId: number().required(),
+      validate: ({ number, string }) => ({
+        articleId: string().required(),
         limit: number().integer().positive().max(100),
         offset: number().integer(),
-        cursor: number().integer().positive(),
+        cursor: string(),
       }),
       resolve: async (_, { articleId, limit, offset, cursor }, context: Context) => {
         const article = await checkArticleById(context, articleId);

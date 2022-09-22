@@ -3,7 +3,7 @@ import { interfaceType } from 'nexus';
 const Node = interfaceType({
   name: 'Node',
   definition(t) {
-    t.nonNull.int('id');
+    t.nonNull.string('id');
   },
 });
 

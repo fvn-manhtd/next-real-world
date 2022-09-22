@@ -10,7 +10,7 @@ query ArticleMeta($slug: String!) {
   }
 }
 
-query Comments($articleId: Int!, $limit: Int, $offset: Int, $cursor: Int) {
+query Comments($articleId: String!, $limit: Int, $offset: Int, $cursor: String) {
   comments(articleId: $articleId, limit: $limit, offset: $offset, cursor: $cursor) {
     ...CommentView
   }
@@ -22,7 +22,7 @@ mutation CreateComment($slug: String!, $input: CommentInput!) {
   }
 }
 
-mutation DeleteComment($deleteCommentId: Int!) {
+mutation DeleteComment($deleteCommentId: String!) {
   deleteComment(id: $deleteCommentId) {
     id
   }

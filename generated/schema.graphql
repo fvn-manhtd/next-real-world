@@ -9,7 +9,7 @@ type Article implements Node {
   description: String!
   favorited: Boolean!
   favoritesCount: Int!
-  id: Int!
+  id: String!
   slug: String!
   tagList: [String!]!
   title: String!
@@ -26,7 +26,7 @@ input ArticleInput {
 type AuthUser implements BaseUser & Node {
   bio: String
   email: String!
-  id: Int!
+  id: String!
   image: String
   token: String
   username: String!
@@ -42,7 +42,7 @@ type Comment implements Node {
   author: Profile!
   body: String!
   createdAt: DateTime!
-  id: Int!
+  id: String!
   updatedAt: DateTime!
 }
 
@@ -71,7 +71,7 @@ type Mutation {
 }
 
 interface Node {
-  id: Int!
+  id: String!
 }
 
 type Profile implements BaseUser {
@@ -87,7 +87,7 @@ type Query {
   articlesCount(author: String, favorited: String, tag: String): Int!
   checkEmail(email: String!): String
   checkUsername(username: String!): String
-  comments(articleId: Int!, cursor: Int, limit: Int = 20, offset: Int = 0): [Comment!]!
+  comments(articleId: String!, cursor: Int, limit: Int = 20, offset: Int = 0): [Comment!]!
   currentUser: AuthUser!
   feed(cursor: Int, limit: Int = 10, offset: Int = 0): [Article!]!
   feedCount: Int!

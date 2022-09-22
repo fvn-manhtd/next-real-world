@@ -33,11 +33,11 @@ const CommentMutation = extendType({
     t.nonNull.field('deleteComment', {
       type: 'Comment',
       args: {
-        id: nonNull(intArg()),
+        id: nonNull(stringArg()),
       },
       authorize: (_, _args, ctx: Context) => !!ctx.currentUser,
-      validate: ({ number }) => ({
-        id: number().required(),
+      validate: ({ string }) => ({
+        id: string().required(),
       }),
       resolve: async (_, { id }, context: Context) => {
         const origin = await checkComment(context, id);
